@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.9",
+    "tailwindcss": "^4.0.9"
+  },
+  "name": "rescue_site",
+  "version": "1.0.0",
+  "description": "May day, May day - help me save the site!",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/style.css -o ./src/output.css --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
