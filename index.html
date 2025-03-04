@@ -1,119 +1,135 @@
-<!-- 
-The A11Y Project är ett community-drivet initiativ som strävar efter att göra digital tillgänglighet enklare, 
-mer begriplig och lättare att implementera för alla.
-
-Läs lite om projektet:
-https://www.a11yproject.com/about/
-
-
-Tillgänglighet är en viktig del av webbutveckling. Det handlar om att göra webbplatser och appar tillgängliga för alla, inklusive personer med funktionsnedsättningar. 
-Det finns många sätt att göra en webbplats mer tillgänglig, till exempel att använda semantisk HTML, skapa enkel navigering och använda alternativa texter för bilder.
- ____________________________________________________________________________________________________
- 1. Läs noga genom koden och identifiera alla tillgänglighetsproblem.
- 
- 2. Testa kör lighthouse i devtools(Google chrome) och se vilka problem som finns.
-
- 3. Skriv en kort sammanfattning av vad som är fel och hur det kan åtgärdas.
-
- 4. Skriv om koden så att den följer tillgänglighetsstandarder.
-
- 5. Skriv en kort sammanfattning av vad du har ändrat och varför.
-
- 6. Testa din nya kod med andra verktyg för tillgänglighet.
-
- 7. Skriv en kort reflektion över hur det var att göra uppgiften. Vad var svårt? Vad lärde du dig?
- ____________________________________________________________________________________________________
-
--->
-
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <!-- Endast en `<title>` används; flera kan orsaka oväntat beteende och påverka SEO samt tillgänglighet negativt. -->
+    <meta name="description" content="News">
+    <meta name="keywords" content="fish, news">
+    <meta name="author" content="Company">
     <title>A11y News</title>
-    <title>A11y News dupe</title>
+    <link rel="stylesheet" href="src/output.css">
+    <script defer src="script.js"></script>
 </head>
 
-<body>
-    <!-- Navigeringsmeny med dubblett-ID:n, inkonsekvent tabindex, och brutna länkar till en 404-sida. -->
-    <nav class="navigation">
-        <span class="nav-item" id="1" tabindex="-1"><a href="404.html" target="_blank">Home</a></span>
-        <span class="nav-item" id="1" tabindex="-1"><a href="404.html">World</a></span>
-        <span class="nav-item" id="1"><a href="404.html">Sports</a></span>
-        <span class="nav-item" id="1"><a href="404.html" target="_blank">Entertainment</a></span>
+<body class="max-w-320 m-auto bg-gray-200">
+
+    <nav class="bg-neutral-800 h-20 md:rounded-md p-2 text-white flex justify-between items-center">
+
+        <a class="pl-2" href="index.html" tabindex="0"> <img class="h-14 border-2 border-solid border-white rounded-md"
+                src="/Rescue_site/images/logga-A11y.webp" alt="A11y logga"></a>
+
+        <div class="hidden md:block">
+            <span class="ml-8" tabindex="2"><a href="index.html">Home</a></span>
+            <span class="ml-8" tabindex="2"><a href="#">World</a></span>
+            <span class="ml-8" tabindex="3"><a href="#">Sports</a></span>
+            <span class="ml-8" tabindex="4"><a href="#">Entertainment</a></span>
+        </div>
+
+        <div class="md:items-end ">
+            <input class="w-34 md:w-auto rounded-md bg-white text-black" type="text" placeholder="Enter search text">
+            <button aria-label="search" class="pl-1 md:p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </button>
+        </div>
+
+        <button aria-label="menu" class="block md:hidden menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+
+        <div class="hidden modal fixed right-0 top-0">
+            <div
+                class="text-black bg-white w-40 pb-10 border-black border-1 border-solid rounded-sm flex flex-col justify-center">
+                <button aria-label="close" class="close self-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <span class="ml-10" tabindex="2"><a href="index.html">Home</a></span>
+                <span class="ml-10" tabindex="2"><a href="#">World</a></span>
+                <span class="ml-10" tabindex="3"><a href="#">Sports</a></span>
+                <span class="ml-10" tabindex="4"><a href="#">Entertainment</a></span>
+            </div>
+        </div>
     </nav>
 
-    <!-- Svåråtkomligt inputfällt -->
-    <div class="input-container">
-        <input type="text" placeholder="Enter text">
-        <button><a href="#">Search</a></button>
-    </div>
+    <div class="flex flex-col items-center p-2">
 
-    <!-- Dold text och klickbar div. 
-     .hidden-text är nästan osynlig p.g.a. låg opacity och roterad tex -->
-    <p class="hidden-text">This text is invisible.</p>
-    <div class="button">Click here!</div>
-    <div class="container">
+        <h1 class="text-3xl ">A11y News</h1>
 
-        <!-- Två <h1>-taggar i .container kan påverka tillgänglighet och SEO. -->
-        <h1>A11y News</h1>
-        <h1></h1>
+        <p>We collect the latest news from all over the world </p>
 
-        <div class="article">
-            <!-- <marquee>(rullande text) kan vara en intressant effekt på en hemsida, men det kan också vara distraherande för besökarna. -->
-            <marquee class="headline">Breaking News: ...!</marquee>
-            <p>Scientists have discovered a new deep-sea fish with bioluminescent fins off the coast of Australia. The
-                unnamed species is believed to have unique traits that could contribute to future medical research and
-                biotechnology.</p>
-            <a href="404.html">Click here!</a>
-        </div>
+        <article>
+            <h2 class="text-2xl p-2">Breaking News</h2>
+            <div class="w-65 hover:shadow-2xl">
+                <img class="w-65 h-40 object-fill"
+                    src="/Rescue_site/images/glowing-deep-sea-fish-a-mesmerizing-bioluminescent-wonder-ai-generated-free-photo.webp"
+                    alt="Glowing deep sea fish">
+                <div class="bg-white p-1 mb-4">
+                    <p>Scientists have discovered a new deep-sea fish with bioluminescent fins off the coast of
+                        Australia.
+                        The
+                        unnamed species is believed to have unique traits that could contribute to future medical
+                        research
+                        and
+                        biotechnology.</p>
+                    <a href="#" class="underline text-purple-950 pt-2">Läs mer</a>
+                </div>
+            </div>
+        </article>
 
-        <!-- Klicka på artikeln för att visa ett meddelande, men den utför egentligen inget. -->
-        <div class="article" onclick="alert('This does nothing!')">
-            <div>Lunar New Year: Celebrate with us!</div>
-
-            <!-- Bilder visas inte, varför? -->
-            <div class="image-container">
-                <img src="/images/ocean.jpg">
-                <img src="/images/city.jpg">
-                <img src="/images/family.jpg">
+        <div>
+            <h3 class="text-2xl p-2">Read news by category</h3>
+            <div class="w-65 hover:shadow-2xl mb-6">
+                <img class="w-65 h-40 object-fill" src="/Rescue_site/images/ocean2.webp"
+                    alt="overlooking ocean and horizon">
+                <div class="bg-white h-10 text-center text-2xl">
+                    <a href="#">Ocean</a>
+                </div>
             </div>
 
-            <p>Access the news by pressing the images</p>
+            <div class="w-65 hover:shadow-2xl mb-6">
+                <img class="w-65 h-40 object-fill" src="/Rescue_site/images/city.webp"
+                    alt="view over city and skyscrapers">
+                <div class="bg-white h-10 text-center text-2xl">
+                    <a href="#">City</a>
+                </div>
+            </div>
+
+            <div class="w-65 hover:shadow-2xl mb-6">
+                <img class="w-65 h-40 object-fill" src="/Rescue_site/images/family.webp"
+                    alt="family walking hand in hand into the sunset">
+                <div class="bg-white h-10 text-center text-2xl">
+                    <a href="#">Family</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Allt för stor bild. För att motverka prestanda problem, ha koll på storleken på bilden -->
-        <div class="article" style="display: none;">
-            <p class="headline">Se en 50MB bild ladda långsamt!</p>
-            <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg" width="50000">
-        </div>
+        <video controls src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video>
 
-        <!-- Videor kräver mycket prestanda, kan vi ändra eller ta bort för att åstakomma bättre resultat -->
-        <div class="article">
-            <video autoplay muted loop src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
-            <img src="http://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif">
-        </div>
     </div>
 
-    <!-- En irriterande annons som alltid syns och innehåller en snurrande bild samt en vilseledande text -->
     <div id="fake-ad">
         <div class="top-section">
             <div class="image-container">
-                <img class="rotating-image" src="images/chest.png">
+                <img class="rotating-image" src="images/chest.png" alt="chest">
             </div>
             <p>🎉 You have won $10,000! 🎉</p>
-            <div class="image-container">
-                <img class="rotating-image" src="images/chest.png">
-            </div>
         </div>
         <p class="btext">Click here to collect your money!</p>
     </div>
 
-
-    <script src="script.js" defer></script>
+    <footer class="bg-neutral-800 h-20 md:rounded-md p-2 text-white">
+        <p>Kontakta oss</p>
+    </footer>
 </body>
 
 </html>
