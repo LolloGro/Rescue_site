@@ -8,8 +8,6 @@
     <meta name="keywords" content="news">
     <meta name="author" content="company">
     <title>A11y News</title>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="cfc67556-8d4f-444b-af8f-0359a8e8370d"
-        data-blockingmode="auto" type="text/javascript"></script>
     <link rel="stylesheet" href="src/output.css">
     <script defer src="script.js"></script>
 </head>
@@ -18,14 +16,14 @@
     <nav class="bg-neutral-800 h-20 md:rounded-md p-2 text-white flex justify-between items-center">
         <a class="pl-2" href="index.html" tabindex="-1"> <img class="h-14 border-2 border-solid border-white rounded-md"
                 src="./public/Logo-A11y.webp" alt="A11y brand logo"></a>
-        <ul class="hidden md:block">
-            <div class="flex flex-row">
+        <div class="hidden md:block">
+            <ul class="flex flex-row">
                 <li class="ml-8"><a tabindex="1" href="index.html">Home</a></li>
                 <li class="ml-8"><a tabindex="2" href="index.html">World</a></li>
                 <li class="ml-8"><a tabindex="3" href="index.html">Sports</a></li>
                 <li class="ml-8"><a tabindex="4" href="index.html">Entertainment</a></li>
-            </div>
-        </ul>
+            </ul>
+        </div>
         <div class="md:items-end ">
             <input class="w-34 md:w-auto rounded-md bg-white text-black" type="text" placeholder="Enter search text">
             <button aria-label="search" class="pl-1 md:p-2">
@@ -51,14 +49,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <ul>
-                    <div class="text-center p-2">
+                <div>
+                    <ul class="text-center p-2">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="#">World</a></li>
                         <li><a href="#">Sports</a></li>
                         <li><a href="#">Entertainment</a></li>
-                    </div>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
